@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>重新发明：applicative-order Y combinator</title>
+    <link rel="stylesheet" href="article.css">
+</head>
+
+<body>
+    <article>
+        <h1>重新发明：applicative-order Y combinator</h1>
+        <p>
+            什么是 applicative-order Y combinator？就是所谓的“应用序 Y
+            组合子”，是一种可以让匿名函数递归的代码组织形式。在最早先的函数式编程里面，函数是没有命名的，此时为了让程序实现递归这一重要功能，Y combinator 便应用而生了。
+        </p>
+        <p>
+            理解并实现 Y combinator 实际上并不难，但是介绍它的资料却常常晦涩难懂，让人摸不着头脑。我首次接触 Y combinator，是我最近在 Dan Friedman 的一本据说是很著名的书《The
+            Little Schemer》里的第九章学习的。这也是第二容易理解 Y combinator 的资料。
+        </p>
+        <img src="book.jpg" alt="The Little Scheme">
+        <p>
+            对于《The Little Schemer》，我看的是它的中文翻译版。光看书的目录是不能窥其一二的，但实际上对于内容的结构安排九分妥当，并且内容讲解循循渐进，还是能够看出作者的用心。这也是此书被评价为“Little
+            书不 Little”的原因之一。
+        </p>
+        <p>
+            可惜我在此之前已经学习过一点 Common
+            Lisp，所以并无那种豁然开朗的顿悟。反倒是越发发现翻译过来的书都有种水土不服的感觉，处处让人读不下去。书里面的代码甚至并非是等宽字体，所以在代码对齐上显得十分随意。为此在较长的代码上，我甚至要数着括号去看清楚它的结构，真让人眼花。
+        </p>
+        <p>
+            也难怪有许多人说书里第九章看不明白，这并无道理。恕我直言，若不是事先知道此书饱受赞誉，这样的阅读体验，我是绝对不会强迫自己读完的。
+        </p>
+        <hr>
+        <p>
+            上面我说过《The Little Schemer》是第二容易理解 Y combinator 的资料，那么第一容易理解的呢？不用怀疑，正是你现在看到这一篇！
+        </p>
+        <p>
+            我会用最简洁和清晰的手段，手把手带你推导出，也就把 Y combinator 给“重新发明”出来。但是此篇并不是给完全不懂 Scheme 的人看的。你至少要懂一点点，会一点正常的递归，lambda，以及明白在
+            Scheme 里面函数是可以当作参数被传递和使用的，这就足够了。
+        </p>
+        <p>
+            如果你 Scheme 还没有入门，我建议你看一看《The Little Schemer》的前面几章。当然你也可以看我写的 Scheme 入门教程，它会在不久后开始更新，这已经在我的计划当中了。
+        </p>
+        <hr>
+        <p>
+            很好，让我们现在开始吧。在整篇 Y combinator 教程里面，我会使用对话的形式引导你用逆向思维去思考。每一节的节奏是一段代码，而后紧接着是我们关于其的对话。那么在这里为了作为区分，我是 RuiShen，你是
+            You。
+        </p>
+        <hr>
+        <pre>
+(define le
+  (lambda (l)
+    (cond
+      ((null? l) 0)
+      (else (add1 (le (cdr l)))))))</pre>
+        <p>
+            R：这个函数有名字吗？<br>
+            Y：是的，它的名字叫 le。<br>
+            <br>
+            R：那它是一个怎么样的函数呢？<br>
+            Y：它是一个递归，我看到它自己调用了自己了，在最后一行：(le (cdr l))。<br>
+            <br>
+            R：这个函数做了怎么样的一件事情呢？<br>
+            Y：它可以统计参数 l 的长度，在列表不为空的情况下加一并递归。
+        </p>
+        <hr>
+        <p>
+            Y：我们可以把名字给去掉吗？<br>
+            R：可以的，直接删掉第一行的 (define le 便可。<br>
+            <br>
+            Y：可是作为递归的最后一行 (le (cdr l)) 该怎么处理？<br>
+            R：这确实是问题所在，但是 le 除了可以是 define 定义的名字之外，它还可以是一个参数。<br>
+            <br>
+            Y：噢，原来如此！那应该把 define 改成 lambda 了。<br>
+            R：很好，就是这样。
+        </p>
+        <pre>
+(lambda (le)
+  (lambda (l)
+    (cond
+      ((null? l) 0)
+      (else (add1 (le (cdr l)))))))</pre>
+        <p>
+            R：你看清楚了吗？<br>
+            Y：看清楚了，它变化不大。<br>
+            <br>
+            R：那此时这个函数的返回值是什么呢？<br>
+            Y：列表的长度……，不对，是另一个函数。这里层的函数才能返回列表的长度。<br>
+        </p>
+        <hr>
+        <p>
+            R：那如果 le 这个参数想要起作用，那么它应该代表什么呢？<br>
+            Y：le 应该代表着里面的这层函数！<br>
+            <br>
+            R：你有办法求出里层的这一层函数吗？<br>
+            Y：这有什么难的，里层的函数是外层函数的返回值呢。
+        </p>
+        <pre>
+((lambda (mk-length)
+   (mk-length mk-length))
+ (lambda (le)
+   (lambda (l)
+     (cond
+       ((null? l) 0)
+       (else (add1 (le (cdr l))))))))</pre>
+        <p>
+            R：里层的函数确实是求出来了。可是你仔细看，此时的 le 代表着什么呢？<br>
+            Y：啊，它是外层函数，所以 (le (cdr l)) 还是不能起作用。
+        </p>
+        <hr>
+        <p>
+            R：你知道，如果有两个 (mk-length mk-length)，那么会起到什么作用吗？<br>
+            Y：无限重复自己的里层函数？<br>
+            <br>
+            R：确实是的，现在 le 实际上就是 mk-length。<br>
+            Y：哈哈，这样只要把 (le (cdr l)) 改成 ((le le) (cdr l))，那么这个递归就成立了！
+        </p>
+        <pre>
+((lambda (mk-length)
+   (mk-length mk-length))
+ (lambda (le)
+   (lambda (l)
+     (cond
+       ((null? l) 0)
+       (else (add1 ((le le) (cdr l))))))))</pre>
+        <hr>
+        <p>
+            R：可惜我们不能直接这样做，得把它们分开。<br>
+            Y：就是说，需要重复的另有其函数？<br>
+            R：正是。首先，倘若只有一个 le，那它应该是一个什么样的函数。
+        </p>
+        <pre>
+(lambda (x)
+  ((mk-length mk-length) x))</pre>
+        <p>
+            Y：是这样吗？<br>
+            R：非常正确，并且它应该当作参数传入到外层函数。
+        </p>
+        <pre>
+(le (lambda (x)
+      ((mk-length mk-length) x)))</pre>
+        <hr>
+        <p>
+            Y：我明白了，我们要重复的这是这段代码！<br>
+            R：如你所料，那现在就把它和 (lambda (mk-length) ... ) 结合起来吧。
+        </p>
+        <pre>
+((lambda (le)
+   ((lambda (mk-length)
+      (mk-length mk-length))
+    (lambda (mk-length)
+      (le (lambda (x)
+            ((mk-length mk-length) x))))))
+ (lambda (le)
+   (lambda (l)
+     (cond
+       ((null? l) 0)
+       (else (add1 (le (cdr l))))))))</pre>
+        <p>
+            R：非常棒，你已经掌握了 Y combinator 了！<br>
+            Y：那它可以用在其他的递归函数上吗？<br>
+            R：当然可以，现在把 length 这个具体函数去掉，再把 mk-length 改成 f 吧。
+        </p>
+        <pre>
+(define Y
+  (lambda (le)
+    ((lambda (f) (f f))
+     (lambda (f)
+       (le (lambda (x) ((f f) x)))))))</pre>
+        <p>
+            此致，这正是标准的 applicative-Order Y combinator 了。
+        </p>
+    </article>
+</body>
+
+</html>

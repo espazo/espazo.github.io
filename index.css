@@ -1,0 +1,64 @@
+::-webkit-scrollbar {
+    width: 0.25rem;
+    height: 0.25rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: DarkGray;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+section {
+    width: 42em;
+    margin: 2em auto;
+
+    border: thin solid DarkGray;
+    border-bottom: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+
+    list-style-type: none;
+}
+
+a {
+    display: block;
+
+    color: RoyalBlue;
+    padding: 1em;
+
+    border-bottom: thin solid DarkGray;
+    text-decoration: none;
+}
+
+a:hover {
+    // text-decoration: underline;
+    text-decoration-style: dashed;
+    text-decoration-color: DarkGray;
+    background-color: Gainsboro;
+    color: blue;
+}
+
+time {
+    font-size: 0.9em;
+    color: DimGray;
+}
+
+@media screen and (max-device-width: 44em) {
+    body {
+        font-size: medium;
+    }
+
+    section {
+        width: auto;
+        margin: 2em 1em;
+    }
+}

@@ -1,0 +1,170 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #efefef;
+}
+
+header div#swiper {
+    width: 700px;
+    height: 350px;
+    background-color: red;
+
+    margin: 15px auto;
+    border-radius: 25px;
+}
+
+header div#banner {
+    width: 700px;
+    height: 50px;
+    background-color: lightblue;
+
+    margin: 15px auto;
+    border-radius: 25px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    width: 700px;
+    /*height: 1400px;*/
+    /*background-color: #ccc;*/
+
+    margin: 0 auto 140px;
+}
+
+main .card {
+    width: 700px;
+    height: 200px;
+    background-color: lightpink;
+
+    margin: 10px 0;
+    border-radius: 25px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+}
+
+main .card .left {
+    width: 150px;
+    height: 200px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+main .card .left img {
+    width: 140px;
+    height: 140px;
+    background-color: purple;
+
+    border-radius: 140px;
+}
+
+main .card .left .sound {
+    width: 140px;
+    height: 40px;
+    background-color: purple;
+
+    border-radius: 40px;
+}
+
+main .card .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+
+    margin: 20px 20px;
+}
+
+main .card .right .title {
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+main .card .right .slogan {
+    font-size: large;
+}
+
+footer {
+    width: 750px;
+    height: 120px;
+    background-color: orange;
+
+    padding-bottom: 10px;
+
+    position: fixed;
+    left: 0;
+    bottom: 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+footer div {
+    width: 100px;
+    height: 100px;
+    /*background-color: purple;*/
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    color: white;
+    font-weight: bold;
+    font-size: large;
+}
+
+footer div img {
+    width: 70px;
+    height: 70px;
+    background: red;
+
+    border-radius: 75px;
+}
+
+nav {
+    width: 120px;
+    height: 120px;
+    /*background-color: lightgrey;*/
+
+    position: fixed;
+    bottom: 160px;
+    right: 30px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav img {
+    width: 85px;
+    height: 85px;
+    background-color: black;
+
+    border-radius: 100px;
+}
+
+nav span {
+    padding: 0 10px;
+    font-size: large;
+    font-weight: bold;
+
+    background-color: white;
+    text-align: center;
+    border-radius: 100px;
+}

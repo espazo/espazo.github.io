@@ -85,8 +85,43 @@ footer {
     margin: 2vw auto;
 }
 
+.floatingActionButton {
+    position: fixed;
+    right: 10px;
+    bottom: 66px;
+
+    margin-right: env(safe-area-inset-bottom);
+    margin-bottom: env(safe-area-inset-bottom);
+}
+
+.floatingActionButton .tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.floatingActionButton .tab .icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+
+    background: #E74C3C;
+}
+
+.floatingActionButton .tab .label {
+    font-size: small;
+    background: white;
+
+    margin-top: 5px;
+    padding: 0 7px;
+    border-radius: 100px;
+}
+
 .safeAreaMargin {
     height: 56px;
+
+    box-sizing: content-box;
+    padding-bottom: env(safe-area-inset-bottom);
 }
 
 .bottomNavigation {

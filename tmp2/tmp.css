@@ -71,11 +71,71 @@ body {
 
 .card {
     width: 95vw;
-    height: 100px;
+    height: 110px;
     background-color: #BDC3C7;
 
     margin: 2vw auto;
+    padding: 2vw;
     border-radius: 3vw;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.card .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.card .left .avatar {
+    width: 65px;
+    height: 65px;
+    border-radius: 100%;
+
+    background-color: #8E44AD;
+}
+
+.card .left .sound {
+    width: 65px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #8E44AD;
+}
+
+.card .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    margin-left: 4vw;
+}
+
+.card .right .title {
+    font-size: large;
+}
+
+.card .right .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.card .right .tabs .tab {
+    border: 1px dashed #E74C3C;
+    padding: 0 5px;
+    margin-right: 2vw;
+}
+
+.card .right .slogan {
+    font-size: small;
+}
+
+.card .right .tabs {
+    font-size: small;
+
 }
 
 footer {
@@ -90,7 +150,6 @@ footer {
     right: 10px;
     bottom: 66px;
 
-    margin-right: env(safe-area-inset-bottom);
     margin-bottom: env(safe-area-inset-bottom);
 }
 

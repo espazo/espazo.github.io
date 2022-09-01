@@ -48,6 +48,8 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+
+    margin-bottom: env(safe-area-inset-bottom);
 }
 
 .bottomNavigation .tab {

@@ -1,170 +1,252 @@
-
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    background-color: #efefef;
+    background: #ECF0F1;
 }
 
-header div#swiper {
-    width: 700px;
-    height: 350px;
-    background-color: red;
+.searchBar {
+    width: 100vw;
+    height: 35px;
 
-    margin: 15px auto;
-    border-radius: 25px;
-}
-
-header div#banner {
-    width: 700px;
-    height: 50px;
-    background-color: lightblue;
-
-    margin: 15px auto;
-    border-radius: 25px;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-main {
-    width: 700px;
-    /*height: 1400px;*/
-    /*background-color: #ccc;*/
-
-    margin: 0 auto 140px;
-}
-
-main .card {
-    width: 700px;
-    height: 200px;
-    background-color: lightpink;
-
-    margin: 10px 0;
-    border-radius: 25px;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: start;
-}
-
-main .card .left {
-    width: 150px;
-    height: 200px;
+    background-color: #BDC3C7;
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+
+.searchBar input {
+    display: block;
+
+    width: 97vw;
+    height: 80%;
+
+    border: 0;
+    border-radius: 100px;
+
+    padding: 0 20px;
+}
+
+.swiper {
+    width: 95vw;
+    height: 38vw;
+    background-color: #BDC3C7;
+
+    margin: 2vw auto;
+
+    border-radius: 3vw;
+}
+
+.selectBar {
+    position: sticky;
+    top: 37px;
+    left: 0;
+
+    width: 95vw;
+    height: 28px;
+    background-color: #E74C3C;
+
+    margin: 2vw auto;
+    border-radius: 14px;
+
+    display: flex;
+    flex-direction: row;
     justify-content: space-around;
     align-items: center;
 }
 
-main .card .left img {
-    width: 140px;
-    height: 140px;
-    background-color: purple;
-
-    border-radius: 140px;
+.selectBar span {
+    color: white;
+    font-size: small;
 }
 
-main .card .left .sound {
-    width: 140px;
-    height: 40px;
-    background-color: purple;
+.card {
+    width: 95vw;
+    height: 110px;
+    background-color: #BDC3C7;
 
-    border-radius: 40px;
-}
+    margin: 2vw auto;
+    padding: 2vw;
+    border-radius: 3vw;
 
-main .card .right {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: start;
 
-    margin: 20px 20px;
+    position: relative;
+    z-index: -1;
+
+    overflow: hidden;
 }
 
-main .card .right .title {
-    font-size: xx-large;
-    font-weight: bold;
+.card .status {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    color: white;
+    font-size: x-small;
+    background-color: #8E44AD;
+
+    padding: 1vw;
 }
 
-main .card .right .slogan {
+.card .go {
+    position: absolute;
+    top: 50%;
+    right: 0;
+
+    width: 1vw;
+    height: 10vw;
+    background: #C0392B;
+}
+
+.card .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.card .left .avatar {
+    width: 65px;
+    height: 65px;
+    border-radius: 100%;
+
+    background-color: #8E44AD;
+}
+
+.card .left .sound {
+    width: 65px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #8E44AD;
+}
+
+.card .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    margin-left: 4vw;
+}
+
+.card .right .title {
     font-size: large;
 }
 
+.card .right .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.card .right .tabs .tab {
+    border: 1px dashed #E74C3C;
+    padding: 0 5px;
+    margin-right: 2vw;
+}
+
+.card .right .slogan {
+    font-size: small;
+}
+
+.card .right .tabs {
+    font-size: small;
+
+}
+
 footer {
-    width: 750px;
-    height: 120px;
-    background-color: orange;
+    color: #8E44AD;
+    font-size: small;
+    text-align: center;
+    margin: 2vw auto;
+}
 
-    padding-bottom: 10px;
+.floatingActionButton {
+    position: fixed;
+    right: 10px;
+    bottom: 66px;
 
+    margin-bottom: env(safe-area-inset-bottom);
+}
+
+.floatingActionButton .tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.floatingActionButton .tab .icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+
+    background: #E74C3C;
+}
+
+.floatingActionButton .tab .label {
+    font-size: small;
+    background: white;
+
+    margin-top: 5px;
+    padding: 0 7px;
+    border-radius: 100px;
+}
+
+.safeAreaMargin {
+    height: 56px;
+
+    box-sizing: content-box;
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+.bottomNavigation {
     position: fixed;
     left: 0;
     bottom: 0;
 
+    height: 56px;
+    width: 100%;
+    background-color: white;
+
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    align-items: center;
+
+    box-sizing: content-box;
+    padding-bottom: env(safe-area-inset-bottom);
 }
 
-footer div {
-    width: 100px;
-    height: 100px;
-    /*background-color: purple;*/
-
+.bottomNavigation .tab {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-
-    color: white;
-    font-weight: bold;
-    font-size: large;
 }
 
-footer div img {
-    width: 70px;
-    height: 70px;
-    background: red;
+.bottomNavigation .tab .icon {
+    width: 24px;
+    height: 24px;
 
-    border-radius: 75px;
+    border-radius: 12px;
+    background-color: #E74C3C;
 }
 
-nav {
-    width: 120px;
-    height: 120px;
-    /*background-color: lightgrey;*/
-
-    position: fixed;
-    bottom: 160px;
-    right: 30px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+.bottomNavigation .tab .label {
+    color: #2C3E50;
+    font-size: small;
 }
 
-nav img {
-    width: 85px;
-    height: 85px;
-    background-color: black;
-
-    border-radius: 100px;
-}
-
-nav span {
-    padding: 0 10px;
-    font-size: large;
-    font-weight: bold;
-
-    background-color: white;
-    text-align: center;
-    border-radius: 100px;
+.bottomNavigation .tab .selected {
+    color: #C0392B;
 }

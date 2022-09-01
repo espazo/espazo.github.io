@@ -154,6 +154,7 @@ body {
     border: 1px dashed #E74C3C;
     padding: 0 5px;
     margin-right: 2vw;
+    margin-top: 1px;
 }
 
 .card .right .slogan {

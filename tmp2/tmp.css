@@ -27,7 +27,7 @@ body {
 .searchBar input {
     display: block;
 
-    width: 95%;
+    width: 97vw;
     height: 80%;
 
     border: 0;
@@ -35,6 +35,37 @@ body {
 
     padding: 0 20px;
 }
+
+.swiper {
+    width: 95vw;
+    height: 38vw;
+    background-color: #BDC3C7;
+
+    margin: 2vw auto;
+
+    border-radius: 3vw;
+}
+
+.selectBar {
+    width: 95vw;
+    height: 28px;
+    background-color: #BDC3C7;
+
+    margin: 0 auto;
+    border-radius: 14px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.selectBar span {
+    color: white;
+    font-size: small;
+}
+
+
 
 .bottomNavigation {
     position: fixed;

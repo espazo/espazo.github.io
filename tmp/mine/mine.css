@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #ECF0F1;
+}
+
+.swiper {
+    width: 95vw;
+    height: 38vw;
+    background-color: #BDC3C7;
+
+    margin: 2vw auto;
+
+    border-radius: 3vw;
+}
+
+footer {
+    color: #8E44AD;
+    font-size: small;
+    text-align: center;
+    margin: 2vw auto;
+}
+
+.floatingActionButton {
+    position: fixed;
+    right: 10px;
+    bottom: 66px;
+
+    margin-bottom: env(safe-area-inset-bottom);
+}
+
+.floatingActionButton .tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.floatingActionButton .tab .icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+
+    background: #E74C3C;
+}
+
+.floatingActionButton .tab .label {
+    font-size: small;
+    background: white;
+
+    margin-top: 5px;
+    padding: 0 7px;
+    border-radius: 100px;
+}
+
+.safeAreaMargin {
+    height: 56px;
+
+    box-sizing: content-box;
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+.bottomNavigation {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+
+    height: 56px;
+    width: 100%;
+    background-color: white;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    box-sizing: content-box;
+    padding-bottom: env(safe-area-inset-bottom);
+    box-shadow: 0 -1px 1px #2C3E50;
+}
+
+.bottomNavigation .tab {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.bottomNavigation .tab .icon {
+    width: 24px;
+    height: 24px;
+
+    border-radius: 12px;
+    background-color: #E74C3C;
+}
+
+.bottomNavigation .tab .label {
+    color: #2C3E50;
+    font-size: small;
+}
+
+.bottomNavigation .tab .selected {
+    color: #C0392B;
+}

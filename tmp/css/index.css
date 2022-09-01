@@ -225,6 +225,7 @@ footer {
 
     box-sizing: content-box;
     padding-bottom: env(safe-area-inset-bottom);
+    box-shadow: 0 -1px 1px #2C3E50;
 }
 
 .bottomNavigation .tab {

@@ -81,6 +81,33 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: start;
+
+    position: relative;
+    z-index: -1;
+
+    overflow: hidden;
+}
+
+.card .status {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    color: white;
+    font-size: x-small;
+    background-color: #8E44AD;
+
+    padding: 1vw;
+}
+
+.card .go {
+    position: absolute;
+    top: 50%;
+    right: 0;
+
+    width: 1vw;
+    height: 10vw;
+    background: #C0392B;
 }
 
 .card .left {

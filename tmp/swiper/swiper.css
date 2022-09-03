@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+    background-color: #eee;
+}
+
+img {
+    vertical-align: middle;
+}
+
+.banner {
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+}
+
+.wrap {
+    display: flex;
+    width: 500vw;
+    flex-wrap: nowrap;
+}
+
+.wrap a {
+    width: 100vw;
+}
+
+.wrap a img {
+    width: 100%;
+}
+
+.circle {
+    position: absolute;
+    bottom: 3vw;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+.circle span {
+    width: 25px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.5);
+    margin: 0 5px;
+}
+
+.circle span.active {
+    background: rgba(255, 255, 255, 1);
+}
